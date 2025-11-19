@@ -25,11 +25,11 @@ def preprocess(example_img, example_label):
 
     return img, example_label
 
-def create_model(initializer='glorot_uniform', activation='relu', optimizer='adam'):
+def create_model(activation='relu', optimizer='adam'):
     model = keras.Sequential([
         layers.Input(shape=IMG_SIZE + (3,)),
         layers.Flatten(),
-        layers.Dense(64),
+        layers.Dense(64, activation=activation),
         layers.Dense(32),
         layers.Dense(3, activation='softmax')
     ])
